@@ -17,7 +17,9 @@ app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, 'uploads')));
 
-app.use(morgan('dev'));
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 app.use('/api/v1/blogs', blogRouter);
 app.use('/api/v1/users', userRouter);
