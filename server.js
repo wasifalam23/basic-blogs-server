@@ -9,12 +9,21 @@ const DB = process.env.DATABASE.replace(
   process.env.DATABASE_PASSWORD
 );
 
-mongoose.connect(DB).then(() => {
-  console.log('DB connection successful');
-});
-
 const port = process.env.PORT || 8000;
 
-app.listen(port, () => {
-  console.log(`App is listening on port ${port}...`);
+const connectDB = async () => {
+  try {
+    const conn = await mongoose.connect(DB);
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
+  } catch (error) {
+    console.log(error);
+    process.exit(1);
+  }
+};
+
+//Connect to the database before listening
+connectDB().then(() => {
+  app.listen(port, () => {
+    console.log('listening for requests');
+  });
 });
