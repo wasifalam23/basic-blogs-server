@@ -1,4 +1,3 @@
-const path = require('path');
 const multer = require('multer');
 const sharp = require('sharp');
 const catchAsync = require('../utils/catchAsync');
@@ -44,7 +43,7 @@ exports.resizeBlogImage = catchAsync(async (req, res, next) => {
     .resize(2000, 1333)
     .toFormat('jpeg')
     .jpeg({ quality: 90 })
-    .toFile(path.join(__dirname, `../uploads/blogs/${req.file.filename}`));
+    .toFile(`/tmp/uploads/blogs/${req.file.filename}`);
 
   next();
 });
