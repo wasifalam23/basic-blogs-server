@@ -23,7 +23,7 @@ const createSendToken = (user, statusCode, req, res) => {
   };
 
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-  if (process.env.NODE_ENV === 'production') cookieOptions.sameSite = 'none';
+  // if (process.env.NODE_ENV === 'production') cookieOptions.sameSite = 'none';
 
   res.cookie('jwt', token, cookieOptions);
 
