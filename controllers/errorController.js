@@ -60,23 +60,23 @@ module.exports = (err, req, res, next) => {
   err.statusCode = err.statusCode || 500;
   err.status = err.status || 'error';
 
-  if (req.file && req.file.filename) {
-    if (req.file.filename.startsWith('blog')) {
-      fs.unlink(
-        path.join(__dirname, `../uploads/blogs/${req.file.filename}`),
-        (err) => {
-          console.log(err);
-        }
-      );
-    } else if (req.file.filename.startsWith('user')) {
-      fs.unlink(
-        path.join(__dirname, `../uploads/users/${req.file.filename}`),
-        (err) => {
-          console.log(err);
-        }
-      );
-    }
-  }
+  // if (req.file && req.file.filename) {
+  //   if (req.file.filename.startsWith('blog')) {
+  //     fs.unlink(
+  //       path.join(__dirname, `../uploads/blogs/${req.file.filename}`),
+  //       (err) => {
+  //         console.log(err);
+  //       }
+  //     );
+  //   } else if (req.file.filename.startsWith('user')) {
+  //     fs.unlink(
+  //       path.join(__dirname, `../uploads/users/${req.file.filename}`),
+  //       (err) => {
+  //         console.log(err);
+  //       }
+  //     );
+  //   }
+  // }
 
   if (process.env.NODE_ENV === 'development') {
     sendErrorDev(err, res);
