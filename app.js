@@ -10,7 +10,12 @@ const AppError = require('./utils/appError');
 
 const app = express();
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(
+  cors({
+    origin: ['https://fascinating-heliotrope-263a12.netlify.app'],
+    credentials: true,
+  })
+);
 
 app.use(express.json());
 app.use(cookieParser());
