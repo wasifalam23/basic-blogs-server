@@ -10,7 +10,7 @@ const AppError = require('./utils/appError');
 
 const app = express();
 
-app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ credentials: true }));
 app.use(express.json());
 app.use(cookieParser());
 
