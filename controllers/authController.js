@@ -85,6 +85,7 @@ exports.logout = (req, res) => {
   };
 
   if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
+  if (process.env.NODE_ENV === 'production') cookieOptions.sameSite = 'none';
 
   res.cookie('jwt', 'loggedout', cookieOptions);
   res.status(200).json({ status: 'success' });
