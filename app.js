@@ -12,7 +12,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: ['https://fascinating-heliotrope-263a12.netlify.app'],
+    origin: ['https://basic-blogs-wasif.netlify.app'],
     credentials: true,
   })
 );
