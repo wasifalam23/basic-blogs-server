@@ -7,15 +7,23 @@ const blogRouter = require('./routes/blogRoutes');
 const userRouter = require('./routes/userRoutes');
 const commentRouter = require('./routes/commentRoutes');
 const AppError = require('./utils/appError');
+const morgan = require('morgan');
 
 const app = express();
 
 app.use(
   cors({
-    origin: ['https://basic-blogs-wasif.netlify.app'],
+    origin:
+      process.env.NODE_ENV === 'production'
+        ? ['https://basic-blogs-wasif.netlify.app']
+        : 'true',
     credentials: true,
   })
 );
+
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
 
 app.use(express.json());
 app.use(cookieParser());
