@@ -24,6 +24,6 @@ const connectDB = async () => {
 //Connect to the database before listening
 connectDB().then(() => {
   app.listen(port, () => {
-    console.log('listening for requests');
+    console.log(`listening for requests on port ${port}`);
   });
 });
